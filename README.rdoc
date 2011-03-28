@@ -1,6 +1,6 @@
 = canonical_dude
 
-canonical_dude ist a small helper for Rails applications to make use of the Canonical URL Tag. Use it to se your
+canonical_dude ist a small helper for Rails applications to make use of the Canonical URL Tag. Use it to set your
 preferred version of a URL.
 
 == Installation
@@ -48,27 +48,32 @@ gives you some freedom in defining your canonical urls by checking for special m
 with a standard rasource approach, you'll have the following URL to the products detail page: /products/:id.
 Also, you have :product_path and :product_url defined as route helpers. Now if there's another product class defined
 called AwesomeProduct ( which inherits from Product but obviously does extra cool stuff ;-), you might have another
-URL for that, too. Sometimes, you have even more of those cases with all different kinds of URLs. Being a good SEO Dude,
-you can, of course, always exactly specify "canonical_url product_url(@product)" or you could have it always in one
-place and just use "canonical_url @product" in all those controllers. All you need now is a helper could look like so:
+URL for that, too. Sometimes, you have even more of those cases with all different kinds of URLs.
+
+Being a good SEO Dude you can, of course, always exactly specify `canonical_url product_url(@product)`. Or you could
+have it always in one place and just use `canonical_url @product` in all those controllers. All you need now is a helper
+which could look like so:
 
   module CanonicalHelper
 
     # alias the AwesomeProduct's canonical url to our initial product url without affecting the awesome_product_url
     alias_method :canonical_awesome_product_url, :product_url
 
-    # You can define the following methods for any class and canonical_dude will attempt for look for those in the
-    # order of the given methosd below (taking our product example again):
-    def canonical_product_url
-    end
+  end
 
-    def canonical_product_path
-    end
 
-    # and as the _grand_ fallback
-    def canonical_url
-    end
+You can define the following helper methods for any class and canonical_dude will attempt to look for those:
+  def canonical_product_url
+    # ...
+  end
 
+  def canonical_product_path
+    # ...
+  end
+
+  # and as the _grand_ fallback
+  def canonical_url
+    # ...
   end
 
 
