@@ -1,7 +1,7 @@
 module CanonicalDude::ControllerMethods
 
   def canonical_url( url_for_options = {} )
-    @canonical_url = case
+    url = case
     when Hash then url_for( url_for_options )
     when String then url_for_options
     else # could be an AR instance, so let's try some custom methods
@@ -17,6 +17,8 @@ module CanonicalDude::ControllerMethods
       return url_for( url_for_options ) unless custom_canonical_method_name
       send( custom_canonical_method_name, url_for_options )
     end
+
+    self.instance_variable_set( "@_canonical_url", url )
   end
 
 end
