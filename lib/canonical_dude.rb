@@ -1,0 +1,3 @@
+module CanonicalDude
+  # Your code goes here...
+end
