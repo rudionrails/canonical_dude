@@ -9,7 +9,7 @@ module CanonicalDude::HelperMethods
 
   # returns true if canonical_url has been explicitly set
   def canonical_url?
-    !!@_canonical_url
+    !!@_canonical_url_for_options
   end
 
 
