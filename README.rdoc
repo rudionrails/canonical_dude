@@ -4,7 +4,7 @@ canonical_dude ist a small helper for Rails applications to make use of the Cano
 preferred version of a URL.
 
 == Installation
-== The Gem Version
+=== The Gem Version
   # for system wide usage
   gem install 'canonical_dude'
   
