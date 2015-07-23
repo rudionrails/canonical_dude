@@ -89,15 +89,15 @@ If you have none of those methods defined, canonical_dude will, fallback again t
 Also worth noting is, that, if you defined any custom canonical_* method which returns nil, canonical_dude will not
 render the canonical_link_tag.
 
-Last but not least, you can control when to show your canonical_link_tag with the canonical_url? helper method:
+Last but not least, you can control when to show your canonical_link_tag with the canonical_link_tag? helper method:
 
 ```ruby
 # in your HTML head of layouts/application.html.erb
-<%= canonical_link_tag if canonical_url? %>
+<%= canonical_link_tag if canonical_link_tag? %>
 ```
 
 
-canonical_url? will return true if you have explicitly defined :canonical_url in your controller. If not, it returns
+canonical_link_tag? will return true if you have explicitly defined :canonical_url in your controller. If not, it returns
 false. So if you only want a canonical tag on specific placed, you have a basic method for it.
 
 
